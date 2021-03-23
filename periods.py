@@ -17,11 +17,13 @@ locations_data.drop(locations_data[~(
 
 sel = alt.selection_interval()
 
+#alt.Color('species', legend=None)
+
 
 chart = alt.Chart(locations_data).mark_point().encode(
     x='reprLong:Q',
     y='timeRange',
-    color=alt.condition(sel, 'timePeriodsKeys:N', alt.value('gray')),
+    color=alt.condition(sel, alt.Color('timePeriodsKeys:N', legend=None), alt.value('gray')),
     tooltip='timePeriodsKeys'
 ).add_selection(
     sel
