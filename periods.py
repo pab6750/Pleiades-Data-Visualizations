@@ -5,8 +5,6 @@ from vega_datasets import data
 alt.renderers.enable('altair_viewer')
 alt.data_transformers.disable_max_rows()
 locations_data = io.open_file("pleiades-locations-latest.csv")
-#names_data = io.open_file("pleiades-names-latest.csv")
-#places_data = io.open_file("pleiades-places-latest.csv")
 
 locations_data['timeRange'] = locations_data['maxDate'] - locations_data['minDate']
 locations_data.drop(
@@ -16,8 +14,6 @@ locations_data.drop(locations_data[~(
 
 
 sel = alt.selection_interval()
-
-#alt.Color('species', legend=None)
 
 
 chart = alt.Chart(locations_data).mark_point().encode(

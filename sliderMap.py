@@ -32,7 +32,7 @@ minDateSel = alt.selection_single(name="minDate", fields=['minDate'],
 chart = alt.Chart(dataset).mark_circle().encode(
     longitude='reprLong',
     latitude='reprLat',
-    color='timePeriodsKeys',
+    color=alt.Color('timePeriodsKeys:N', legend=None),
     tooltip = 'timePeriodsKeys'
 ).properties(
     width=widthValue,
