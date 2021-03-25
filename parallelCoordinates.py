@@ -1,4 +1,6 @@
+#IMPORTANT: make these the average, and add more dimensions
 import IOReader as io
+import pandas as pd
 import altair as alt
 from vega_datasets import data
 

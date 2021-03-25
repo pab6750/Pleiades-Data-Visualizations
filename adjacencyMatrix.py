@@ -1,5 +1,6 @@
 import IOReader as io
 import altair as alt
+import pandas as pd
 from vega_datasets import data
 
 alt.renderers.enable('altair_viewer')
@@ -12,10 +13,10 @@ dataset = io.open_file("pleiades-locations-latest.csv")
 #alt.condition(alt.datum.timePeriods == alt.datum.timePeriods, alt.ColorValue('white'), alt.ColorValue('black'))
 
 chart = alt.Chart(dataset.reset_index()).mark_rect().encode(
-    x='index',
-    y='index',
-    color=alt.condition(alt.datum.timePeriods == alt.datum.timePeriods, alt.ColorValue('black'), alt.ColorValue('green')),
-    tooltip='timePeriodsKeys'
+    x=alt.X('index', title=None),
+    y=alt.Y('index', title=None),
+    color='timePeriods',
+    tooltip='timePeriods'
 )
 
 chart.show()

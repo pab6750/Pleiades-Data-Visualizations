@@ -1,5 +1,5 @@
 #excel reference at: https://www.youtube.com/watch?v=QKM7q4fHYOU
-
+#IMPORTANT: make these the average, and add more dimensions
 import IOReader as io
 import pandas as pd
 import altair as alt
@@ -19,6 +19,7 @@ df.drop(
 
 df['area'] = (df['topRightX'] - df['bottomLeftX']) * (df['topRightY'] - df['bottomLeftY'])
 
+#rescaling area
 maxArea = df['area'].max()
 minArea = df['area'].min()
 
@@ -31,17 +32,47 @@ scaledRange = scaledMax - scaledMin
 
 df['scaledArea'] = (((df['area'] - minArea) * scaledRange) / originalRange) + scaledMin
 
-df.drop(df[df['scaledArea'] == 0].index, inplace=True)
-df.drop(df[df.index % 60 != 0].index, inplace=True)
+#rescaling reprLat
+maxReprLat = df['reprLat'].max()
+minReprLat = df['reprLat'].min()
 
+originalRange = maxReprLat - minReprLat
+
+scaledMax = 3000
+scaledMin = 0
+
+scaledRange = scaledMax - scaledMin
+
+df['scaledReprLat'] = (((df['reprLat'] - minReprLat) * scaledRange) / originalRange) + scaledMin
+
+#rescaling reprLong
+
+maxReprLong = df['reprLong'].max()
+minReprLong = df['reprLong'].min()
+
+originalRange = maxReprLong - minReprLong
+
+scaledMax = 3000
+scaledMin = 0
+
+scaledRange = scaledMax - scaledMin
+
+df['scaledReprLong'] = (((df['reprLong'] - minReprLong) * scaledRange) / originalRange) + scaledMin
+
+#dropping unnecessary data
+
+df.drop(df[df['scaledArea'] == 0].index, inplace=True)
+df = df[df['timePeriodsKeys'].str.split(",").str.len().lt(2)]
+
+#chart specification
 chart = alt.Chart(df).transform_window(
     index='count()'
 ).transform_fold(
-    ['scaledArea', 'maxDate', 'minDate']
+    ['scaledArea', 'maxDate', 'minDate', 'scaledReprLat', 'scaledReprLong']
 ).mark_line().encode(
     x='key:N',
-    y='value:Q',
-    color='timePeriodsKeys'
+    y='average(value):Q',
+    color=alt.Color('timePeriods', legend=None)
 ).properties(width=500)
 
 chart.show()
