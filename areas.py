@@ -1,5 +1,5 @@
 #excel reference at: https://www.youtube.com/watch?v=QKM7q4fHYOU
-#IMPORTANT: make these the average, and add more dimensions
+
 import IOReader as io
 import pandas as pd
 import altair as alt
@@ -72,7 +72,7 @@ chart = alt.Chart(df).transform_window(
 ).mark_line().encode(
     x='key:N',
     y='average(value):Q',
-    color=alt.Color('timePeriods', legend=None)
+    color='timePeriods'
 ).properties(width=500)
 
 chart.show()

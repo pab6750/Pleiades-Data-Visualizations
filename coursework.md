@@ -11,7 +11,7 @@
 
 <div style="background-color: #cccccc;">
     <h2 style="background-color: #909090;font-size: 1em;margin-bottom: 0;">What are all visual mappings used?</h2>
-    <div>Longitude, Latitude, Colour.</div>
+    <div>CHANGE THIS</div>
 </div>
 
 <div style="background-color: #cccccc;">
