@@ -10,7 +10,24 @@
 
 <div style="background-color: #cccccc;">
     <h2 style="background-color: #909090;font-size: 1em;margin-bottom: 0;">What are all visual mappings used?</h2>
-    <div>CHANGE THIS</div>
+    <div>
+        x position:
+        <ul>
+            <li>Longitude Category.</li>
+        </ul>
+        y position:
+        <ul>
+            <li>Latitude Category.</li>
+        </ul>
+        colour:
+        <ul>
+            <li>Time Periods Keys Category.</li>
+        </ul>
+        tooltip:
+        <ul>
+            <li>Title Category.</li>
+        </ul>
+    </div>
 </div>
 
 <div style="background-color: #cccccc;">

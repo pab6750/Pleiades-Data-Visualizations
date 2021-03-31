@@ -10,7 +10,24 @@
 
 <div style="background-color: #cccccc;">
     <h2 style="background-color: #909090;font-size: 1em;margin-bottom: 0;">What are all visual mappings used?</h2>
-    <div>CHANGE THIS</div>
+    <div>
+        y position:
+        <ul>
+            <li>Average values across different time periods.</li>
+        </ul>
+        x position:
+        <ul>
+            <li>maxDate Category</li>
+            <li>minDate Category</li>
+            <li>scaledArea Category</li>
+            <li>scaledReprLat Category</li>
+            <li>scaledReprLong Category</li>
+        </ul>
+        colour:
+        <ul>
+            <li>Time Periods Category</li>
+        </ul>
+    </div>
 </div>
 
 <div style="background-color: #cccccc;">
